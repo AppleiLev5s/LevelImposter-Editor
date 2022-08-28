@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.5415f14a.css",
-    "main.js": "/static/js/main.9ad163d3.js",
+    "main.css": "/static/css/main.e97192f5.css",
+    "main.js": "/static/js/main.5a6c8932.js",
     "static/media/blueprint-icons-20.eot?": "/static/media/blueprint-icons-20.41ddc43fc03d2ac8fce8.eot",
     "static/media/blueprint-icons-20.ttf?": "/static/media/blueprint-icons-20.825b946a5ee739f0afc3.ttf",
     "static/media/blueprint-icons-16.eot?": "/static/media/blueprint-icons-16.98964adeba68b1b17c20.eot",
@@ -43,11 +43,11 @@
     "static/media/roboto-greek-ext-300-normal.woff2": "/static/media/roboto-greek-ext-300-normal.35b9d6be04b95f0f0530.woff2",
     "static/media/roboto-greek-ext-700-normal.woff2": "/static/media/roboto-greek-ext-700-normal.bd9854c751441ccc1a70.woff2",
     "index.html": "/index.html",
-    "main.5415f14a.css.map": "/static/css/main.5415f14a.css.map",
-    "main.9ad163d3.js.map": "/static/js/main.9ad163d3.js.map"
+    "main.e97192f5.css.map": "/static/css/main.e97192f5.css.map",
+    "main.5a6c8932.js.map": "/static/js/main.5a6c8932.js.map"
   },
   "entrypoints": [
-    "static/css/main.5415f14a.css",
-    "static/js/main.9ad163d3.js"
+    "static/css/main.e97192f5.css",
+    "static/js/main.5a6c8932.js"
   ]
 }
