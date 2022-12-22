@@ -52,6 +52,8 @@ export default function MapHierarchyElement(props: { elementID: MaybeGUID, searc
             return "wrench";
         else if (type.startsWith("dec-") || type.startsWith("room-"))
             return "cube";
+        else if (type.startsWith("data-"))
+            return "database";
         return "help";
     }
 
@@ -70,8 +72,10 @@ export default function MapHierarchyElement(props: { elementID: MaybeGUID, searc
     const intent = isDisabled ? "none" : getIntent(element.type);
     const isMatchName = element.name.toLowerCase().includes(props.searchQuery.toLowerCase());
     const isMatchType = element.type.toLowerCase().includes(props.searchQuery.toLowerCase());
+    const isDataHidden = element.type.startsWith("data-") && !settings.isDevMode;
+    const isSearchHidden = !isMatchName && !isMatchType && element.type !== "util-layer";
 
-    if (!isMatchName && !isMatchType && element.type !== "util-layer")
+    if (isSearchHidden || isDataHidden)
         return null;
 
     return (

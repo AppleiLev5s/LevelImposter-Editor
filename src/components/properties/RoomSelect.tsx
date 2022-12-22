@@ -2,18 +2,19 @@ import { Button, ControlGroup } from "@blueprintjs/core";
 import { MenuItem2 } from "@blueprintjs/popover2";
 import { ItemRenderer, Select2 } from "@blueprintjs/select";
 import { useTranslation } from "react-i18next";
-import useSelectedElem from "../../hooks/jotai/useSelectedElem";
+import useElement from "../../hooks/jotai/useElements";
 import { useElementType } from "../../hooks/jotai/useTypes";
+import { MaybeGUID } from "../../types/generic/GUID";
 import LIElement from "../../types/li/LIElement";
 
 const RoomSelecter = Select2.ofType<LIElement>();
 
-export default function RoomSelect(props: { useDefault: boolean }) {
+export default function RoomSelect(props: { elementID: MaybeGUID, useDefault: boolean, useDataObj?: boolean }) {
     const { t } = useTranslation();
     const roomElems = useElementType("util-room");
-    const [selectedElem, setSelectedElem] = useSelectedElem();
+    const [element, setElement] = useElement(props.elementID);
 
-    const parentRoom = roomElems.find((e) => e.id === selectedElem?.properties.parent);
+    const parentRoom = roomElems.find((e) => e.id === element?.properties.parent);
     const hasRooms = roomElems.length > 0;
 
     const roomSelectRenderer: ItemRenderer<LIElement> = (elem, props) => (
@@ -27,7 +28,7 @@ export default function RoomSelect(props: { useDefault: boolean }) {
             onFocus={props.handleFocus} />
     );
 
-    if (!selectedElem)
+    if (!element)
         return null;
 
     return (
@@ -39,7 +40,7 @@ export default function RoomSelect(props: { useDefault: boolean }) {
                 items={roomElems}
                 itemRenderer={roomSelectRenderer}
                 onItemSelect={(room) => {
-                    setSelectedElem({ ...selectedElem, properties: { ...selectedElem.properties, parent: room.id } });
+                    setElement({ ...element, properties: { ...element.properties, parent: room.id } });
                 }}
                 popoverProps={{ minimal: true }}>
 
@@ -57,7 +58,7 @@ export default function RoomSelect(props: { useDefault: boolean }) {
                     minimal
                     rightIcon="cross"
                     onClick={() => {
-                        setSelectedElem({ ...selectedElem, properties: { ...selectedElem.properties, parent: undefined } });
+                        setElement({ ...element, properties: { ...element.properties, parent: undefined } });
                     }}
                 />
             )}

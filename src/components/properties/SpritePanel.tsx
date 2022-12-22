@@ -21,6 +21,10 @@ const TYPE_BLACKLIST = [
     "util-triggerrepeat",
     "util-triggersound",
     "util-dummy",
+    "data-saboxygen",
+    "data-sablights",
+    "data-sabcomms",
+    "data-sabreactor",
 ];
 
 export default function SpritePanel() {

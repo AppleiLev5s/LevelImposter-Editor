@@ -56,7 +56,9 @@ export default function TaskPanel() {
                     <p className="bp4-text-muted">{selectedElem.type}</p>
                 </div>
                 <FormGroup>
-                    <RoomSelect useDefault={true} />
+                    <RoomSelect
+                        elementID={selectedElem.id}
+                        useDefault={true} />
                     <ControlGroup fill>
                         <LengthSelect
                             fill
@@ -84,7 +86,9 @@ export default function TaskPanel() {
                             }}
                         />
                     </ControlGroup>
-                    <DescriptionInput />
+                    <DescriptionInput
+                        elementID={selectedElem.id}
+                    />
                 </FormGroup>
             </PanelContainer>
             <MapError isVisible={parentRoom === undefined}>

@@ -79,7 +79,7 @@ export default function MapElement(props: { elementID: GUID }) {
         }
     }, [elem?.properties.color, sprite]);
 
-    if (!elem || elem.type === "util-layer")
+    if (!elem || elem.type === "util-layer" || elem.type.startsWith("data-"))
         return null;
 
     const w = sprite ? sprite.width : 0;

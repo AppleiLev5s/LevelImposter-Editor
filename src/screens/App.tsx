@@ -3,6 +3,7 @@ import { Provider } from 'jotai';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import CheckMobile from '../components/dialogs/CheckMobile';
+import { _useDataObjCreator } from '../hooks/jotai/useDataObj';
 import { useSettingsValue } from '../hooks/jotai/useSettings';
 import useEmbed from '../hooks/useEmbed';
 import useIDParam from '../hooks/useIDParam';
@@ -18,6 +19,7 @@ export default function App() {
     const settings = useSettingsValue();
     const isEmbeded = useEmbed();
     useIDParam();
+    _useDataObjCreator();
 
     React.useEffect(() => {
 

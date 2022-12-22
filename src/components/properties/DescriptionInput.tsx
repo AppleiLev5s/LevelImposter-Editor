@@ -1,31 +1,33 @@
+import React from "react";
 import { Button, ControlGroup, InputGroup } from "@blueprintjs/core";
 import { useTranslation } from "react-i18next";
-import useSelectedElem from "../../hooks/jotai/useSelectedElem";
+import useElement from "../../hooks/jotai/useElements";
+import { MaybeGUID } from "../../types/generic/GUID";
 
-export default function DescriptionInput() {
+export default function DescriptionInput(props: { elementID: MaybeGUID }) {
     const { t } = useTranslation();
-    const [selectedElem, setSelectedElem] = useSelectedElem();
+    const [element, setElement] = useElement(props.elementID);
 
-    if (!selectedElem)
+    if (!element)
         return null;
 
     return (
         <ControlGroup fill style={{ marginTop: 5 }}>
             <InputGroup
-                key={selectedElem.id + "-description"}
+                key={element.id + "-description"}
                 fill
                 leftIcon="info-sign"
                 placeholder={t("task.defaultDescription") as string}
-                defaultValue={selectedElem.properties.description ? selectedElem.properties.description : ""}
+                defaultValue={element.properties.description}
                 onBlur={(e) => {
-                    setSelectedElem({ ...selectedElem, properties: { ...selectedElem.properties, description: e.currentTarget.value } });
+                    setElement({ ...element, properties: { ...element.properties, description: e.currentTarget.value } });
                 }}
             />
             <Button
                 minimal
                 rightIcon="cross"
                 onClick={() => {
-                    setSelectedElem({ ...selectedElem, properties: { ...selectedElem.properties, description: "" } });
+                    setElement({ ...element, properties: { ...element.properties, description: "" } });
                 }}
             />
         </ControlGroup>

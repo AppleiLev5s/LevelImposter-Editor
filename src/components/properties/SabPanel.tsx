@@ -1,6 +1,6 @@
-import { Button, ControlGroup, H5, InputGroup } from "@blueprintjs/core";
-import React from "react";
+import { H5 } from "@blueprintjs/core";
 import { useTranslation } from "react-i18next";
+import useSelectedData from "../../hooks/jotai/useDataObj";
 import useSelectedElem from "../../hooks/jotai/useSelectedElem";
 import { useElementType } from "../../hooks/jotai/useTypes";
 import { useSpriteType } from "../../hooks/useSprite";
@@ -12,18 +12,15 @@ import RoomSelect from "./RoomSelect";
 export default function SabPanel() {
     const { t } = useTranslation();
     const [selectedElem, setSelectedElem] = useSelectedElem();
-    const [sabName, setSabName] = React.useState("");
     const sprite = useSpriteType(selectedElem?.type);
     const roomElems = useElementType("util-room");
+    const [sabData, setSabData] = useSelectedData();
 
     const parentRoom = roomElems.find((e) => e.id === selectedElem?.properties.parent);
 
-    React.useEffect(() => {
-        setSabName(t(`au.${selectedElem?.type}`) || selectedElem?.name || "");
-    }, [selectedElem]);
-
     if (!selectedElem
-        || !selectedElem.type.startsWith("sab-"))
+        || !selectedElem.type.startsWith("sab-")
+        || sabData === undefined)
         return null;
 
     return (
@@ -35,13 +32,20 @@ export default function SabPanel() {
                         src={sprite?.src}
                         alt={selectedElem.name}
                     />
-                    <H5 style={{ marginBottom: 3 }}>{sabName}</H5>
-                    <p className="bp4-text-muted">{selectedElem.type}</p>
+                    <H5 style={{ marginBottom: 3 }}>
+                        {t(`au.${sabData?.type}`)}
+                    </H5>
+                    <p className="bp4-text-muted">
+                        {selectedElem.type}
+                    </p>
                 </div>
-                <RoomSelect useDefault={true} />
-                {selectedElem.type.startsWith("sab-btn") && (
-                    <DescriptionInput />
-                )}
+                <RoomSelect
+                    elementID={sabData.id}
+                    useDefault={true}
+                />
+                <DescriptionInput
+                    elementID={sabData.id}
+                />
             </PanelContainer>
 
             <MapError isVisible={parentRoom === undefined}>

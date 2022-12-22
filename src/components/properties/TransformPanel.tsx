@@ -8,6 +8,14 @@ import DevInfo from "../DevInfo";
 import MapError from "./MapError";
 import PanelContainer from "./PanelContainer";
 
+const BLACKLISTED_TYPES = [
+    "util-layer",
+    "data-saboxygen",
+    "data-sablights",
+    "data-sabcomms",
+    "data-sabreactor",
+]
+
 export default function TransformPanel() {
     const { t } = useTranslation();
     const setSelectedID = useSetSelectedElemID();
@@ -17,7 +25,7 @@ export default function TransformPanel() {
 
     const elemVisibility = selectedElem && getMapVisibility(selectedElem);
 
-    if (!selectedElem || selectedElem.type === "util-layer")
+    if (!selectedElem || BLACKLISTED_TYPES.includes(selectedElem.type))
         return null;
 
     return (

@@ -15,7 +15,11 @@ const BLACKLISTED_TYPES = [
     "util-minimap",
     "util-layer",
     "util-spawn1",
-    "util-spawn2"
+    "util-spawn2",
+    "data-saboxygen",
+    "data-sablights",
+    "data-sabcomms",
+    "data-sabreactor",
 ];
 
 const RESTRICTED_TYPES = [
