@@ -4,7 +4,7 @@ import LIElement from "../../types/li/LIElement";
 import { elementsAtom } from "./useMap";
 
 // Atom
-export const elementTypeAtom = atomFamily((type: string) => {
+export const elementTypeAtom = atomFamily((type?: string) => {
     const typeAtom = atom(
         (get) => {
             const elements = get(elementsAtom);
@@ -21,6 +21,6 @@ export const elementTypeAtom = atomFamily((type: string) => {
 }, (a, b) => a === b);
 
 // Hook
-export function useElementType(type: string) {
+export function useElementType(type?: string) {
     return useAtomValue(elementTypeAtom(type));
 }

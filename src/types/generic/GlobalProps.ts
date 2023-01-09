@@ -73,6 +73,13 @@ const GLOBAL_PROPERTIES: GlobalProp[] = [
             "sab-comms",
         ]
     },
+    {
+        prop: "spawnType",
+        types: [
+            "util-spawn1",
+            "util-spawn2",
+        ]
+    }
 ];
 
 export default GLOBAL_PROPERTIES;

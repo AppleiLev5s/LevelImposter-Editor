@@ -23,6 +23,9 @@ export default interface LIProperties {
     spriteData?: string;
     color?: LIColor;
 
+    // Spawn
+    spawnType?: string;
+
     // Vent
     leftVent?: GUID;
     middleVent?: GUID;

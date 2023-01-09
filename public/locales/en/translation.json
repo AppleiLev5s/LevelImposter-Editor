@@ -189,6 +189,14 @@
         "doorInfo": "Any door attatched to room will close when this button is pressed.",
         "errorNoRoom": "This object does not have a room. Sabotage will not function properly."
     },
+    "spawn": {
+        "title": "Spawn Type",
+        "circle": "Circular",
+        "random": "Random",
+        "choice": "Choose on Spawn",
+        "globalInfo": "Spawn type is global and can only be changed per-map.",
+        "singularInfo": "Circular spawns only need 1 spawn point."
+    },
     "console": {
         "title": "Console",
         "range": "Range",

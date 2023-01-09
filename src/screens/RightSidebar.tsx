@@ -20,6 +20,7 @@ import TriggerPanel from "../components/properties/TriggerPanel";
 import VentPanel from "../components/properties/VentPanel";
 import DoorPanel from "../components/properties/DoorPanel";
 import MinimapSpritePanel from "../components/properties/MinimapSpritePanel";
+import SpawnPanel from "../components/properties/SpawnPanel";
 
 export default function RightSidebar() {
 
@@ -43,6 +44,7 @@ export default function RightSidebar() {
             <SoundPanel />
             <StepSoundPanel />
             <TimerPanel />
+            <SpawnPanel />
             <TriggerPanel />
             <ColliderPanel />
             <MinimapPanel />

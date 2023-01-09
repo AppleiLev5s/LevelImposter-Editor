@@ -7,6 +7,7 @@ export const DEFAULT_LADDER_HEIGHTS: Record<string, number> = {
     "util-ladder1": 3,
     "util-ladder2": 1.5,
 }
+export const DEFAULT_SPAWN_TYPE = "circle";
 
 export const DEFAULT_PLATFORM_OFFSET = 3;
 export const DEFAULT_PLATFORM_ENTER = -1.5;
@@ -63,4 +64,15 @@ export const LANGUAGES = [
     "fr",
     "zh-cn",
     "ru",
+];
+
+export const SINGLE_TYPES = [
+    "util-minimap",
+    "util-platform",
+    "sab-electric",
+    "sab-oxygen1",
+    "sab-oxygen2",
+    "sab-comms",
+    "sab-reactorleft",
+    "sab-reactorright"
 ];

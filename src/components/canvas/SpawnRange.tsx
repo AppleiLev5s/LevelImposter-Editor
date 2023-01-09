@@ -1,14 +1,15 @@
 import { Image } from "react-konva";
 import { useSelectedElemValue } from "../../hooks/jotai/useSelectedElem";
 import { useSpriteType } from "../../hooks/useSprite";
-import { DEFAULT_SPAWN_RANGE, UNITY_SCALE } from "../../types/generic/Constants";
+import { DEFAULT_SPAWN_RANGE, DEFAULT_SPAWN_TYPE, UNITY_SCALE } from "../../types/generic/Constants";
 
 export default function SpawnRange() {
     const selectedElem = useSelectedElemValue();
     const sprite = useSpriteType("util-dummy");
 
-    const radius = selectedElem?.properties.range ? selectedElem.properties.range : DEFAULT_SPAWN_RANGE;
-    const playerCount = 15;
+    const isSingular = (selectedElem?.properties.spawnType || DEFAULT_SPAWN_TYPE) !== "circle";
+    const radius = isSingular ? 0 : (selectedElem?.properties.range ? selectedElem.properties.range : DEFAULT_SPAWN_RANGE);
+    const playerCount = isSingular ? 1 : 15;
     const arr = new Array(playerCount).fill(0);
 
     if (!selectedElem || !selectedElem.type.startsWith("util-spawn"))

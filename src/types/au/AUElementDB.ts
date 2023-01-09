@@ -5,6 +5,12 @@ export const EXILE_IDS: string[] = [
     "Airship"
 ];
 
+export const SPAWN_TYPES: string[] = [
+    "circle",
+    "random",
+    "choice",
+];
+
 export const PRESET_RESOURCE_IDS: Record<string, string[]> = {
     "Carpet": [
         "FootstepCarpet01.wav",
